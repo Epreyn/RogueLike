@@ -9,11 +9,7 @@ namespace RogueLike.Classes
         {
         }
 
-        public Monster()
-        {
-        }
-
-        public Monster(Map map) : base(map)
+        public Monster(Map map, int bHP, int max) : base(map, bHP, max)
         {
         }
     }

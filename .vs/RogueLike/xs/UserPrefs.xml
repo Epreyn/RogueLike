@@ -1,0 +1,35 @@
+﻿<Properties StartupConfiguration="{977B8FDF-3200-459A-AFFC-1C30039B3664}|Default">
+  <MonoDevelop.Ide.ItemProperties.RogueLike PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="RogueLike/Classes/Map.cs">
+    <Files>
+      <File FileName="RogueLike/Classes/Program.cs" Line="32" Column="31" />
+      <File FileName="RogueLike/Classes/Modifier.cs" Line="12" Column="46" />
+      <File FileName="RogueLike/Classes/Character.cs" Line="72" Column="1" />
+      <File FileName="RogueLike/Classes/Hero.cs" Line="12" Column="9" />
+      <File FileName="RogueLike/Classes/Monster.cs" Line="12" Column="23" />
+      <File FileName="RogueLike/Classes/Map.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="RogueLike" expanded="True">
+            <Node name="RogueLike" expanded="True">
+              <Node name="Classes" expanded="True">
+                <Node name="Map.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|anycpu" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

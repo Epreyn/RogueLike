@@ -29,8 +29,10 @@ namespace RogueLike
 
                 map.ReadMap("map01");
 
-                hero = new Hero();
-                monster = new Monster(map);
+                hero = new Hero(map, 10, 10);
+                monster = new Monster(map, 5, 5);
+
+                map.GenerateWalls(10, 60);
 
                 #endregion
 
@@ -43,7 +45,7 @@ namespace RogueLike
                     map.PlaceMonster(monster);
                     map.PlaceHero(hero);
 
-                    map.GenerateMap();
+                    map.DisplayMap();
                     hero.Action(ref Reset, map.TileMap);
                 }
             }

@@ -34,7 +34,7 @@ namespace RogueLike.Classes
             String line;
             try
             {
-                var path = "/Users/pierre/Projects/RogueLike/RogueLike/Maps/" + mapToLoad + ".txt";
+                var path = "/Users/pierre/Documents/GitHub/RogueLike/RogueLike/Maps/" + mapToLoad + ".txt";
                 StreamReader sr = new StreamReader(path);
 
                 int count = 0;
@@ -66,20 +66,26 @@ namespace RogueLike.Classes
             }
         }
 
-        public void GenerateMap()
+        public void GenerateWalls(int min, int max)
         {
-            for (int i = 0; i < TileMap.GetLength(0); i++)
+            var rng = new Random();
+            var rngWalls = rng.Next(min, max + 1);
+
+            for (int i = 0; i < rngWalls; i++)
             {
-                for (int j = 0; j < TileMap.GetLength(1); j++)
+                var isPlaced = false;
+
+                while (!isPlaced)
                 {
-                    Console.ForegroundColor =
-                        TileMap[i, j].Sprite == '@' ?
-                        ConsoleColor.Green :
-                        TileMap[i, j].Sprite == 'M' ?
-                        ConsoleColor.Red : ConsoleColor.White;
-                    Console.Write(TileMap[i, j].Sprite);
+                    var posX = rng.Next(0, MapSizeRow());
+                    var posY = rng.Next(0, MapSizeColumn());
+
+                    if (TileMap[posX, posY].Sprite == '.')
+                    {
+                        isPlaced = true;
+                        TileMap[posX, posY] = new Tile('#');
+                    }
                 }
-                Console.WriteLine();
             }
         }
 
@@ -91,6 +97,25 @@ namespace RogueLike.Classes
         public void PlaceMonster(Monster monster)
         {
             TileMap[monster.PositionX, monster.PositionY] = !monster.IsDead() ? new Tile('M') : new Tile('.');
+        }
+
+        public void DisplayMap()
+        {
+            for (int i = 0; i < TileMap.GetLength(0); i++)
+            {
+                for (int j = 0; j < TileMap.GetLength(1); j++)
+                {
+                    Console.ForegroundColor =
+                        TileMap[i, j].Sprite == '@' ?
+                        ConsoleColor.Green :
+                        TileMap[i, j].Sprite == 'M' ?
+                        ConsoleColor.Red :
+                        TileMap[i, j].Sprite == '.' ?
+                        ConsoleColor.DarkGray : ConsoleColor.White; ;
+                    Console.Write(TileMap[i, j].Sprite);
+                }
+                Console.WriteLine();
+            }
         }
     }
 }

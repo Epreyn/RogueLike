@@ -9,7 +9,7 @@ namespace RogueLike.Classes
         {
         }
 
-        public Hero()
+        public Hero(Map map, int bHP, int max) : base (map, bHP, max)
         {
         }
 

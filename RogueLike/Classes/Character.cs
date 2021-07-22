@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 namespace RogueLike.Classes
 {
     public class Character
@@ -35,12 +37,14 @@ namespace RogueLike.Classes
             Luck = luck;
         }
 
-        public Character(Map map)
+        public Character(Map map, int baseHP, int maxStat)
         {
             var rng = new Random();
             var isPlaced = false;
+            var pointsToAttribute = maxStat * 3;
 
-            Name = "MONSTER";
+            var rngNameLength = rng.Next(3, 5);
+            Name = GenerateName(rngNameLength);
 
             while (!isPlaced)
             {
@@ -53,50 +57,65 @@ namespace RogueLike.Classes
 
             Level = 1;
 
-            var rngHealth = rng.Next(5, 21);
-            Health = new int[2] { rngHealth, rngHealth };
+            for (int i = 0; i < 5; i++)
+            {
+                var rngStat = pointsToAttribute < maxStat ?
+                    rng.Next(1, pointsToAttribute / 2 + 1) :
+                    rng.Next(1, maxStat + 1);
 
-            var rngAttack = rng.Next(1, 6);
-            Attack = rngAttack;
+                switch (i)
+                {
+                    case 0:
+                        Attack = rngStat;
+                        break;
 
-            var rngDefense = rng.Next(1, 6);
-            Defense = rngDefense;
+                    case 1:
+                        Defense = rngStat;
+                        break;
 
-            var rngSpeed = rng.Next(1, 6);
-            Speed = rngSpeed;
+                    case 2:
+                        Speed = rngStat;
+                        break;
 
-            var rngLuck = rng.Next(1, 6);
-            Luck = rngLuck;
-        }
+                    case 3:
+                        Luck = rngStat;
+                        break;
 
-        public Character()
-        {
-            var rng = new Random();
+                    case 4:
+                        if (pointsToAttribute > 0) rngStat = pointsToAttribute;
+                        Health = new int[2] { rngStat + baseHP, rngStat + baseHP };
+                        break;
+                    default:
+                        break;
+                }
 
-            Name = "RANDOM";
-            PositionX = 1;
-            PositionY = 1;
-            Level = 1;
-
-            var rngHealth = rng.Next(5, 21);
-            Health = new int[2] { rngHealth, rngHealth };
-
-            var rngAttack = rng.Next(2, 11);
-            Attack = rngAttack;
-
-            var rngDefense = rng.Next(2, 11);
-            Defense = rngDefense;
-
-            var rngSpeed = rng.Next(2, 11);
-            Speed = rngSpeed;
-
-            var rngLuck = rng.Next(2, 11);
-            Luck = rngLuck;
+                pointsToAttribute -= rngStat;
+                if (pointsToAttribute < 0) pointsToAttribute = 0;
+            }
         }
 
         public bool IsDead()
         {
             return Health[0] <= 0;
+        }
+
+        private static string GenerateName(int len)
+        {
+            Random r = new Random();
+            string[] consonants = { "b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "l", "n", "p", "q", "r", "s", "sh", "zh", "t", "v", "w", "x" };
+            string[] vowels = { "a", "e", "i", "o", "u", "ae", "y" };
+            string Name = "";
+            Name += consonants[r.Next(consonants.Length)].ToUpper();
+            Name += vowels[r.Next(vowels.Length)];
+            int b = 2;
+            while (b < len)
+            {
+                Name += consonants[r.Next(consonants.Length)];
+                b++;
+                Name += vowels[r.Next(vowels.Length)];
+                b++;
+            }
+            return Name;
         }
     }
 }
