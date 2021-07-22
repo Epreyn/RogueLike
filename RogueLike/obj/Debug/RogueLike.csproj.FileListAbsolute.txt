@@ -1,0 +1,6 @@
+/Users/pierre/Projects/RogueLike/RogueLike/obj/Debug/RogueLike.csproj.AssemblyReference.cache
+/Users/pierre/Projects/RogueLike/RogueLike/obj/Debug/RogueLike.csproj.CoreCompileInputs.cache
+/Users/pierre/Projects/RogueLike/RogueLike/bin/Debug/RogueLike.exe
+/Users/pierre/Projects/RogueLike/RogueLike/bin/Debug/RogueLike.pdb
+/Users/pierre/Projects/RogueLike/RogueLike/obj/Debug/RogueLike.exe
+/Users/pierre/Projects/RogueLike/RogueLike/obj/Debug/RogueLike.pdb
